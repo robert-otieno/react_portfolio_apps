@@ -1,17 +1,12 @@
 import React from 'react'
 
 const FormInput = (props) => {
-    const { label, onChange, id, ...inputProps } = props
+    const { label, errorMessage, onChange, id, ...inputProps } = props
   return (
-    <div className='p-4 my-2'>
-        <label htmlFor="">{label}</label>
-        <input className='' {...inputProps} onChange={onChange}
-            // type="text"
-            // placeholder={props.placeholder}
-            // name={props.name}
-            // ref={props.refer}
-            // onChange={e => props.setUsername(e.target.value)}
-        />
+    <div className='flex flex-col w-full mb-4'>
+        <label className='text-xs font-semibold text-slate-600 mb-2' htmlFor="">{label}<span className='text-red-500'>*</span></label>
+        <input className='font-thin tracking-wide text-slate-700 border-gray-300 focus:border-slate-500 focus:ring-slate-500 sm:text-sm' {...inputProps} onChange={onChange} />
+        <span className={`text-xs py-2 text-red-500 hidden`}>{errorMessage}</span>
     </div>
   )
 }
