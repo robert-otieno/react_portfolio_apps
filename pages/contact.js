@@ -11,6 +11,27 @@ const contact = () => {
     const inputs = [
         {
             id: 1,
+            name: 'email',
+            type: 'email',
+            label: 'Email',
+            placeholder: 'john.doe@example.com',
+            required: true,
+            errorMessage: "Please input a valid email"
+        },
+        {
+            id: 2,
+            name: 'phone',
+            type: 'tel',
+            inputMode: 'tel',
+            autoComplete: 'tel',
+            label: 'Phone Number',
+            placeholder: '+254 701 123 345',
+            pattern: '^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$',
+            required: true,
+            errorMessage: "Please input a valid phone number"
+        },
+        {
+            id: 3,
             name: 'fullname',
             type: 'text',
             label: 'Full Name',
@@ -19,13 +40,13 @@ const contact = () => {
             errorMessage: 'Please enter a full name',
         },
         {
-            id: 2,
-            name: 'email',
-            type: 'email',
-            label: 'Email',
-            placeholder: 'john.doe@example.com',
+            id: 4,
+            name: 'website',
+            type: 'url',
+            label: 'Do you currently have a website? If so, can I see it?',
+            placeholder: 'www.example.com',
             required: true,
-            errorMessage: "Please input a valid email"
+            errorMessage: 'Please enter a valid website',
         }
     ]
 
@@ -47,9 +68,8 @@ const contact = () => {
                 ))}
                 <div className="flex flex-col w-full mb-4">
                     <label className='text-xs font-semibold text-slate-600 mb-2' htmlFor="">Message<span className='text-red-500'>*</span></label>
-                    <textarea className='font-thin tracking-wide text-slate-700 border-gray-300 focus:border-slate-500 focus:ring-slate-500  focus:ring-0 sm:text-sm' name="message" id="message" placeholder="Tell us a bit more about what you're looking for..." rows="5" onChange={handleChange} required={true}></textarea>
+                    <textarea className='font-thin tracking-wide text-slate-700 border-gray-300 focus:border-slate-500 focus:ring-slate-500 focus:ring-0 sm:text-sm' name="message" id="message" placeholder="Tell us a bit more about what you're looking for..." rows="5" onChange={handleChange} required={true}></textarea>
                     <span className={`text-xs py-2 text-red-500 hidden`}>Please input a message</span>
-
                 </div>
                 <button className='bg-red-700 hover:bg-red-700 p-3 text-white font-bold text-xl'>Submit</button>
             </form>
