@@ -17,3 +17,11 @@
 .btn__secondary {
     @apply w-full border py-2 flex justify-center gap-2 hover:bg-gray-200
 }
+
+.input_text + * {
+    @apply text-gray-400
+}
+
+.input_text:focus + * {
+    @apply text-indigo-500
+}

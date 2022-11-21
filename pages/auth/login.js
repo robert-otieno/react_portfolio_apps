@@ -6,8 +6,11 @@ import styles from '../../styles/Form.module.css'
 
 import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa'
+import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
+import { useState } from 'react'
 
 const login = () => {
+    const [show, setShow] = useState(false)
     return (
         <Layout>
             <Head>
@@ -25,9 +28,11 @@ const login = () => {
                 <form className='flex flex-col gap-2'>
                     <div className={styles.input_group}>
                         <input className={styles.input_text} type="email" name="email" placeholder="Email" />
+                        <span className='icon flex items-center px-4'><HiAtSymbol size={20} /></span>
                     </div>
                     <div className={styles.input_group}>
-                        <input className={styles.input_text} type="password" name="password" placeholder="Password" />
+                        <input className={styles.input_text} type={`${show ? "text" : "password"}`} name="password" placeholder="Password" />
+                        <span className='icon flex items-center px-4 cursor-pointer hover:text-indigo-500' onClick={() => setShow(!show)}><HiFingerPrint size={20} /></span>
                     </div>
 
                     {/* Login buttons */}
@@ -35,10 +40,10 @@ const login = () => {
                         <button type="submit" className={styles.btn__primary}>Submit</button>
                     </div>
                     <div className='input-button'>
-                        <button type="button" className={styles.btn__secondary}>Sign In with Google <FcGoogle className='h-5 w-5' /></button>
+                        <button type="button" className={styles.btn__secondary}>Sign In with Google <FcGoogle size={20} /></button>
                     </div>
                     <div className='input-button'>
-                        <button type="button" className={styles.btn__secondary}>Sign In with Github <FaGithub className='h-5 w-5' /></button>
+                        <button type="button" className={styles.btn__secondary}>Sign In with Github <FaGithub size={20} /></button>
                     </div>
                 </form>
 
