@@ -2,6 +2,9 @@ import React, { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import FormInput from '../components/FormInput'
 
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const contact = () => {
     const [values, setValues] = useState({
         phone: '',
@@ -59,8 +62,22 @@ const contact = () => {
         emailjs.sendForm('service_z71j0p7', 'template_jxd6zd6', form.current, 'h4QMPJ38PDO7atLwa')
         .then((result) => {
             console.log(result.text);
+            toast.success("Message sent successfully" , {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                })
+                e.target.reset()
         }, (error) => {
             console.log(error.text);
+            toast.error("Error! Message not sent!", {
+                position: toast.POSITION.TOP_LEFT
+              });
         })
         // console.log(values)
     }
@@ -83,6 +100,7 @@ const contact = () => {
                 </div>
                 <button className='bg-red-700 hover:bg-red-700 p-3 text-white font-bold text-xl'>Submit</button>
             </form>
+            <ToastContainer />
         </div>
     )
 }
