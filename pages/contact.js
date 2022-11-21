@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import FormInput from '../components/FormInput'
 
 const contact = () => {
     const [values, setValues] = useState({
+        phone: '',
         fullname: '',
         email: '',
+        website: '',
         message: ''
     })
 
@@ -49,10 +52,17 @@ const contact = () => {
             errorMessage: 'Please enter a valid website',
         }
     ]
-
+    const form = useRef()
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(values)
+
+        emailjs.sendForm('service_z71j0p7', 'template_jxd6zd6', form.current, 'h4QMPJ38PDO7atLwa')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        })
+        // console.log(values)
     }
 
     const handleChange = (e) => {
@@ -61,7 +71,7 @@ const contact = () => {
 
     return (
         <div className='font-sans bg-gray-200 flex items-center justify-center h-screen'>
-            <form className='flex flex-col bg-white shadow-md w-full max-w-sm md:max-w-md lg:max-w-lg p-8' onSubmit={handleSubmit}>
+            <form ref={form} className='flex flex-col bg-white shadow-md w-full max-w-sm md:max-w-md lg:max-w-lg p-8' onSubmit={handleSubmit}>
                 <h1 className="font-bold text-slate-900 text-3xl text-center py-2">Say Hi! 👋</h1>
                 {inputs.map((input) => (
                     <FormInput key={input.id} {...input} onChange={handleChange} />
