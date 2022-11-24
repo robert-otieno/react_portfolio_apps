@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
-import Sidebar from '../components/Sidebar'
+import Sidebar from './Sidebar'
 
-function dashboard() {
+export default function Dashboard({ children }) {
     return (
         <div>
             <Head>
@@ -11,11 +11,10 @@ function dashboard() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className="bg-gray-100">
+            <main className="bg-gray-100 h-screen">
                 <Sidebar />
+                {children}
             </main>
         </div>
     )
 }
-
-export default dashboard
