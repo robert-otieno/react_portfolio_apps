@@ -10,7 +10,7 @@ import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
 import { useState } from 'react'
 
 const login = () => {
-    const [show, setShow] = useState(false)
+    
     return (
         <Layout>
             <Head>
@@ -48,7 +48,6 @@ const login = () => {
                 </form>
 
                 <p className="text-center text-xs text-gray-400">Don't have an account yet? <Link href='/auth/register' className='text-blue-700 focus:outline-none'>Sign Up</Link></p>
-
             </section>
         </Layout>
     )
