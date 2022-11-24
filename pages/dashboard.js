@@ -10,7 +10,7 @@ function dashboard() {
                 <meta name="description" content="Dashboard" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            
+
             <main className="bg-gray-100">
                 <Sidebar />
             </main>
